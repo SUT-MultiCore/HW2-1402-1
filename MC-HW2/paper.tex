@@ -1,0 +1,109 @@
+\documentclass{article}
+\usepackage{formatting/packages}
+\usepackage{formatting/names}
+\usepackage{formatting/macros}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{xcolor}
+\renewcommand{\theenumi}{\alph{enumi}}
+\usepackage{enumitem}
+\newcounter{Ax}
+\newcounter{Bx}
+\usepackage{floatrow}
+\usepackage{fancyvrb} % for "\Verb" macro
+\VerbatimFootnotes    % enable use of \Verb in footnotes
+\usepackage{dirtytalk}
+\usepackage{amssymb,amsmath}
+\usepackage[showframe=false]{geometry}
+\usepackage{changepage}
+\usepackage{multirow}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+%"mystyle" code listing set
+\lstset{style=mystyle}
+\lstdefinelanguage
+   [x64]{Assembler}     % add a "x64" dialect of Assembler
+   [x86masm]{Assembler} % based on the "x86masm" dialect
+   % with these extra keywords:
+   {morekeywords={CDQE,CQO,CMPSQ,CMPXCHG16B,JRCXZ,LODSQ,MOVSXD, %
+                  POPFQ,PUSHFQ,SCASQ,STOSQ,IRETQ,RDTSCP,SWAPGS, %
+                  rax,rdx,rcx,rbx,rsi,rdi,rsp,rbp, %
+                  r8,r8d,r8w,r8b,r9,r9d,r9w,r9b, %
+                  r10,r10d,r10w,r10b,r11,r11d,r11w,r11b, %
+                  r12,r12d,r12w,r12b,r13,r13d,r13w,r13b, %
+                  r14,r14d,r14w,r14b,r15,r15d,r15w,r15b}} % etc.
+
+\newcommand{\itemA}{%
+    \addtocounter{Ax}{1}
+    \item[A\theAx.]}
+\newcommand{\itemB}{%
+    \addtocounter{Bx}{1}
+    \item[B\theBx.]}
+
+\lstset{language=[x64]Assembler}
+
+
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{openMP}{
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\begin{document}
+
+
+\rightline{
+   \makebox[6em][c]{
+        \includegraphics[height=3cm]{figs/uni/sharif-logo-fa.png}
+  }
+  }
+\vspace{-20 pt}
+\noindent\hfill \leftline{\small\bf Fall Semester 1402-1403} \\[-5em]
+\vspace{-2 pt}
+\leftline{\Large\bf MultiCore Computing} \\[.7em]
+\vspace{-5 pt}
+\leftline{\bf Lecturer: Hajar Falahati} \\ [1.7 em]
+\\
+  
+ \hrule height .2em
+ \normalsize
+ \vspace{5pt}
+\noindent\makebox [0pt][l]{Homework 2}\hfill \makebox [0pt][c]{Cache Coherency, OpenMP}\hfill \makebox[0pt][r]{Deadline 1402/9/13}\null\par
+ \vspace{5pt}
+\hrule height .2em
+\vspace{10 pt}
+%
+\input{body/Q1}
+\newpage
+\input{body/Q2}
+\newpage
+\input{body/Q3}
+\input{body/Q4}
+\newpage
+\input{body/Q5}
+\newpage
+\input{body/document}
+\input{body/generalrule}
+
+
+\end{document}
+
+

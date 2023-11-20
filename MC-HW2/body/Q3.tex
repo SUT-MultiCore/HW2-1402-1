@@ -1,0 +1,65 @@
+\section{OpenMP (Synchronization)}
+%
+
+In this section, we are going to examine different synchronization methods implemented by \textbf{OpenMP Directives}. 
+
+
+
+
+\vspace{3mm}
+\noindent Use \textbf{make} command to build executable outputs from \textbf{OPENMP\_SYNCH} file. 
+
+\noindent Learn about these directives before jumping into the questions.
+
+\begin{itemize}
+    \item omp parallel for + firstprivate, shared, default clauses and reduction
+    \item omp atomic
+    \item omp critical
+\end{itemize}
+
+\noindent{
+a) \textbf{Program Setup}:
+
+\vspace{2mm}
+
+1) How many threads are used for parallel sections.
+\vspace{2mm}
+
+2) How many processes are used for your program.
+\vspace{2mm}
+
+3) Is it possible to use stack memory for a selected array instead of allocating it?
+
+\vspace{1cm}
+
+\noindent b) \textbf{Even Check}:
+
+\vspace{2mm}
+Run the 'even\_check' executable and answer the following questions:
+\vspace{3mm}
+
+1) Briefly explain the difference between 'atomic' and 'critical.' You can use \href{https://godbolt.org/}{godbolt} to check the generated assembly code for these pragmas.
+
+\vspace{2mm}
+
+2) Why are atomic and critical implementations slower than the sequential implementation?
+
+\vspace{2mm}
+
+3) Explain what reduction is doing underneath and compare its result to other implementations.
+
+\vspace{1cm}
+
+\noindent c) \textbf{Prime Check}:
+
+\vspace{2mm}
+Run the 'prime\_check' executable and answer the following questions:
+\vspace{3mm}
+
+
+1) How do atomic and critical implementations work better than sequential? Which issue is resolved by changing the matcher function?
+
+\vspace{2mm}
+
+
+2) Does reduction work better than atomic and critical in this example?

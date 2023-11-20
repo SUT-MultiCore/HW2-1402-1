@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.26"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "OPEN_MP_SCHEDULE",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "OPEN_MP_SCHEDULE::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-OPEN_MP_SCHEDULE-Debug-08342b6b8c804ba8eeec.json",
+					"name" : "OPEN_MP_SCHEDULE",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/halfblood/uni/semester-7/TA/multi-core/OPEN_MP_SCHEDULE/cmake-build-debug",
+		"source" : "/home/halfblood/uni/semester-7/TA/multi-core/OPEN_MP_SCHEDULE"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 5
+	}
+}

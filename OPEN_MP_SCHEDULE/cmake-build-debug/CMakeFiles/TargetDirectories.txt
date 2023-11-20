@@ -1,0 +1,3 @@
+/home/halfblood/uni/semester-7/TA/multi-core/OPEN_MP_SCHEDULE/cmake-build-debug/CMakeFiles/OPEN_MP_SCHEDULE.dir
+/home/halfblood/uni/semester-7/TA/multi-core/OPEN_MP_SCHEDULE/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/halfblood/uni/semester-7/TA/multi-core/OPEN_MP_SCHEDULE/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,127 @@
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage{MnSymbol,wasysym}
+%HF
+% \ding
+\usepackage{pifont}
+%\usepackage{algpseudocode}
+\usepackage[noend]{algpseudocode}
+%\usepackage{lipsum}
+\usepackage{algcompatible}
+\usepackage[ruled, linesnumbered]{algorithm2e}
+\usepackage{color}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{graphicx}
+
+\usepackage{calc}
+\usepackage{multicol}
+\usepackage[most]{tcolorbox}
+%\usepackage{mips}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+%HF
+
+\usepackage{mathptmx}
+\usepackage{fancyhdr}
+\usepackage[normalem]{ulem}
+%\usepackage[sort,noadjust]{cite}
+%\usepackage[keeplastbox]{flushend}
+\usepackage{subfig}
+\usepackage{xspace}
+\usepackage{amsmath}
+\usepackage{ifthen}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{rotating}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage[normalem]{ulem}
+\usepackage{colortbl}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{setspace}
+\usepackage{enumerate}
+\usepackage[hang,flushmargin]{footmisc}
+\usepackage{hhline}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{theorem}
+%HF\usepackage{algorithm2e}
+\usepackage{soul}
+\usepackage{yfonts}
+\usepackage{xcolor}
+\usepackage{cellspace}
+%\usepackage{titlesec}
+\setlength\cellspacetoplimit{0pt}
+\setlength\cellspacebottomlimit{10pt}
+\usepackage{rotating}
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{scalerel}
+\usepackage[export]{adjustbox}
+\usepackage[labelfont=bf,textfont=bf,skip=5pt,font=footnotesize]{caption}
+\usepackage{courier}
+\usepackage{makecell}
+\newenvironment{enumpacked}{%
+\begin{enumerate}[noitemsep,nolistsep,leftmargin=*]
+}
+{%
+\end{enumerate}
+}
+
+
+\newenvironment{enumpackedno}{%
+\begin{enumerate}[noitemsep,nolistsep,leftmargin=-0.03cm,label={}]
+}
+{%
+\end{enumerate}
+}
+
+
+\newenvironment{itempacked}{%
+\begin{itemize}[noitemsep,nolistsep,leftmargin=*]
+}
+{%
+\end{itemize}
+}
+%\addtolength{\abovecaptionskip}{-1.0ex}
+%\addtolength{\belowcaptionskip}{-1.5ex}
+%\addtolength{\floatsep}{0ex}
+%\addtolength{\textfloatsep}{-3ex}
+
+\raggedbottom
+\normalem
+
+
+
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatletter
+\def\Cline#1#2{\@Cline#1#2\@nil}
+\def\@Cline#1-#2#3\@nil{%
+  \omit
+  \@multicnt#1%
+  \advance\@multispan\m@ne
+  \ifnum\@multicnt=\@ne\@firstofone{&\omit}\fi
+  \@multicnt#2%
+  \advance\@multicnt-#1%
+  \advance\@multispan\@ne
+  \leaders\hrule\@height#3\hfill
+  \cr}
+\makeatother
+
+
+\hyphenpenalty 200
+\tolerance 2000
+\linespread{1.0}

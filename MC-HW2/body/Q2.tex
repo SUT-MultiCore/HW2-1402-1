@@ -1,0 +1,121 @@
+\section{Cache Coherence (MESI Protocol)}
+%
+
+
+MESI protocol is an extension for MSI snooping protocol. This variation is used by processors like \\ Pentium III.
+
+\noindent In addition to MSI states, Exclusive state is added.  The exclusive state indicates that
+a cache block is resident in only a single cache but is clean. If a block is in
+the E state, it can be written without generating any invalidates, which optimizes
+the case where a block is read by a single cache before being written by that
+same cache. 
+
+\noindent The advantage of adding this state is that a subsequent
+write to a block in the exclusive state by the same core need not acquire bus
+access or generate an invalidate, since the block is known to be exclusively
+in this local cache; the processor merely changes the state to modified
+
+\vspace{1mm}
+
+\noindent We have a system with four byte-addressable processors (P0, P1, P2, and P3). Each processor has
+a private 256-byte, direct-mapped, write-back L1 cache with a block size of 64 bytes. Coherence is
+maintained using the MESI protocol. Accessible memory addresses range from 0x10000000 to
+0x1FFFFFFF.
+\begin{verbatim}
+Executed Memory instructions:
+ld R1, 0x110000c0 \\ A memory instruction from P1
+st R2, 0x11000080 \\ A memory instruction from P1
+st R3, 0x1FFFFF40 \\ A memory instruction from P0
+ld R4, 0x1FFFFF00 \\ A memory instruction from P1
+st R5, 0x110000c0 \\ A memory instrcution from p1
+\end{verbatim}
+After executing the above sequence of 5 memory instructions, we find the final tag store state of the four caches to be as follows:
+%
+\begin{center}
+\textbf{Final State}
+\\ \vspace{3mm}
+\begin{tabular}{|ccc|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Cache 0}}                                   \\ \hline
+\multicolumn{1}{|c|}{}      & \multicolumn{1}{c|}{Tag}      & MESI state \\ \hline
+\multicolumn{1}{|c|}{Set 0} & \multicolumn{1}{c|}{0x1FFFFF} & S          \\ \hline
+\multicolumn{1}{|c|}{Set 1} & \multicolumn{1}{c|}{0x1FFFFF} & M          \\ \hline
+\multicolumn{1}{|c|}{Set 2} & \multicolumn{1}{c|}{0x110000} & I          \\ \hline
+\multicolumn{1}{|c|}{Set 3} & \multicolumn{1}{c|}{0x110000} & I          \\ \hline
+\end{tabular}
+\begin{tabular}{|ccc|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Cache 1}}                                   \\ \hline
+\multicolumn{1}{|c|}{}      & \multicolumn{1}{c|}{Tag}      & MESI state \\ \hline
+\multicolumn{1}{|c|}{Set 0} & \multicolumn{1}{c|}{0x1FFFFF} & S          \\ \hline
+\multicolumn{1}{|c|}{Set 1} & \multicolumn{1}{c|}{0x1FFFFF} & I          \\ \hline
+\multicolumn{1}{|c|}{Set 2} & \multicolumn{1}{c|}{0x110000} & M          \\ \hline
+\multicolumn{1}{|c|}{Set 3} & \multicolumn{1}{c|}{0x110000} & E          \\ \hline
+\end{tabular}
+\\ \vspace{1mm}
+\begin{tabular}{|ccc|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Cache 2}}                                   \\ \hline
+\multicolumn{1}{|c|}{}      & \multicolumn{1}{c|}{Tag}      & MESI state \\ \hline
+\multicolumn{1}{|c|}{Set 0} & \multicolumn{1}{c|}{0x10FFFF} & I          \\ \hline
+\multicolumn{1}{|c|}{Set 1} & \multicolumn{1}{c|}{0x1FFFFF} & I          \\ \hline
+\multicolumn{1}{|c|}{Set 2} & \multicolumn{1}{c|}{0x10FFFF} & M          \\ \hline
+\multicolumn{1}{|c|}{Set 3} & \multicolumn{1}{c|}{0x10FFFF} & M          \\ \hline
+\end{tabular}
+\begin{tabular}{|ccc|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Cache 3}}                                   \\ \hline
+\multicolumn{1}{|c|}{}      & \multicolumn{1}{c|}{Tag}      & MESI state \\ \hline
+\multicolumn{1}{|c|}{Set 0} & \multicolumn{1}{c|}{0x133333} & E          \\ \hline
+\multicolumn{1}{|c|}{Set 1} & \multicolumn{1}{c|}{0x000000} & I          \\ \hline
+\multicolumn{1}{|c|}{Set 2} & \multicolumn{1}{c|}{0x000000} & I          \\ \hline
+\multicolumn{1}{|c|}{Set 3} & \multicolumn{1}{c|}{0x10FFFF} & I          \\ \hline
+\end{tabular}
+\end{center}
+%
+Fill in the following table with the initial tag store states (i.e., Tag and MESI state) before executing
+the five memory instructions shown above. Answer X if the tag value of the address is unknown. For
+the MESI states, put in all the possible values (i.e., M, E, S, and I).
+%
+\begin{center} 
+\newpage
+\textbf{Initial State}
+\\ \vspace{3mm}
+\begin{tabular}{|ccc|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Cache 0}}                                   \\ \hline
+\multicolumn{1}{|c|}{}      & \multicolumn{1}{c|}{Tag}      & MESI state \\ \hline
+\multicolumn{1}{|c|}{Set 0} & \multicolumn{1}{c|}{} &            \\ \hline
+\multicolumn{1}{|c|}{Set 1} & \multicolumn{1}{c|}{} &            \\ \hline
+\multicolumn{1}{|c|}{Set 2} & \multicolumn{1}{c|}{} &            \\ \hline
+\multicolumn{1}{|c|}{Set 3} & \multicolumn{1}{c|}{} &            \\ \hline
+\end{tabular}
+\begin{tabular}{|ccc|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Cache 1}}                                   \\ \hline
+\multicolumn{1}{|c|}{}      & \multicolumn{1}{c|}{Tag}      & MESI state \\ \hline
+\multicolumn{1}{|c|}{Set 0} & \multicolumn{1}{c|}{} &            \\ \hline
+\multicolumn{1}{|c|}{Set 1} & \multicolumn{1}{c|}{} &            \\ \hline
+\multicolumn{1}{|c|}{Set 2} & \multicolumn{1}{c|}{} &            \\ \hline
+\multicolumn{1}{|c|}{Set 3} & \multicolumn{1}{c|}{} &            \\ \hline
+\end{tabular}
+\\ \vspace{1mm}
+\begin{tabular}{|ccc|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Cache 2}}                                   \\ \hline
+\multicolumn{1}{|c|}{}      & \multicolumn{1}{c|}{Tag}      & MESI state \\ \hline
+\multicolumn{1}{|c|}{Set 0} & \multicolumn{1}{c|}{} &            \\ \hline
+\multicolumn{1}{|c|}{Set 1} & \multicolumn{1}{c|}{} &            \\ \hline
+\multicolumn{1}{|c|}{Set 2} & \multicolumn{1}{c|}{} &            \\ \hline
+\multicolumn{1}{|c|}{Set 3} & \multicolumn{1}{c|}{} &            \\ \hline
+\end{tabular}
+\begin{tabular}{|ccc|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Cache 3}}                                   \\ \hline
+\multicolumn{1}{|c|}{}      & \multicolumn{1}{c|}{Tag}      & MESI state \\ \hline
+\multicolumn{1}{|c|}{Set 0} & \multicolumn{1}{c|}{} &            \\ \hline
+\multicolumn{1}{|c|}{Set 1} & \multicolumn{1}{c|}{} &            \\ \hline
+\multicolumn{1}{|c|}{Set 2} & \multicolumn{1}{c|}{} &            \\ \hline
+\multicolumn{1}{|c|}{Set 3} & \multicolumn{1}{c|}{} &            \\ \hline
+\end{tabular}
+\end{center}

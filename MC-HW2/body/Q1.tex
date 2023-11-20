@@ -1,0 +1,33 @@
+\section{Cache Coherence (MSI Protocol)}
+%
+A snapshot of the state associated with 2 caches, on 2 separate cores, in a centralized shared memory
+system is shown below. In this system, cache coherency is maintained with an MSI snooping protocol.
+You can assume that the caches are direct mapped.
+%
+\begin{center}
+\begin{tabular}{|ccccccc|}
+\hline
+\multicolumn{7}{|c|}{\textbf{P0}}                                                                                          \\ \hline
+\multicolumn{1}{|c|}{\textbf{Set}} & \multicolumn{1}{c|}{\textbf{Tag}} & \multicolumn{1}{c|}{\textbf{Data Word 1}} & \multicolumn{1}{c|}{\textbf{Data Word 2}} & \multicolumn{1}{c|}{\textbf{Data Word 3}} & \multicolumn{1}{c|}{\textbf{Data Word 4}} & \textbf{MESI state} \\ \hline
+\multicolumn{1}{|c|}{0}            & \multicolumn{1}{c|}{1000}         & \multicolumn{1}{c|}{10}                   & \multicolumn{1}{c|}{20}                   & \multicolumn{1}{c|}{30}                   & \multicolumn{1}{c|}{40}                   & M                   \\ \hline
+\multicolumn{1}{|c|}{1}            & \multicolumn{1}{c|}{8000}         & \multicolumn{1}{c|}{500}                  & \multicolumn{1}{c|}{600}                  & \multicolumn{1}{c|}{700}                  & \multicolumn{1}{c|}{800}                  & S                   \\ \hline
+\multicolumn{1}{|c|}{...}          & \multicolumn{1}{c|}{...}          & \multicolumn{1}{c|}{...}                  & \multicolumn{1}{c|}{...}                  & \multicolumn{1}{c|}{...}                  & \multicolumn{1}{c|}{...}                  & ...                 \\ \hline
+\multicolumn{1}{|c|}{N}            & \multicolumn{1}{c|}{3000}         & \multicolumn{1}{c|}{2}                    & \multicolumn{1}{c|}{4}                    & \multicolumn{1}{c|}{6}                    & \multicolumn{1}{c|}{8}                    & S                   \\ \hline
+\end{tabular}
+\\ \vspace{5mm}
+\begin{tabular}{|ccccccc|}
+\hline
+\multicolumn{7}{|c|}{\textbf{P1}}                                                                                                                                                                                                                                            \\ \hline
+\multicolumn{1}{|c|}{\textbf{Set}} & \multicolumn{1}{c|}{\textbf{Tag}} & \multicolumn{1}{c|}{\textbf{Data Word 1}} & \multicolumn{1}{c|}{\textbf{Data Word 2}} & \multicolumn{1}{c|}{\textbf{Data Word 3}} & \multicolumn{1}{c|}{\textbf{Data Word 4}} & \textbf{MESI state} \\ \hline
+\multicolumn{1}{|c|}{0}            & \multicolumn{1}{c|}{1000}         & \multicolumn{1}{c|}{10}                   & \multicolumn{1}{c|}{10}                   & \multicolumn{1}{c|}{10}                   & \multicolumn{1}{c|}{10}                   & I                   \\ \hline
+\multicolumn{1}{|c|}{1}            & \multicolumn{1}{c|}{8000}         & \multicolumn{1}{c|}{500}                  & \multicolumn{1}{c|}{600}                  & \multicolumn{1}{c|}{700}                  & \multicolumn{1}{c|}{800}                  & S                   \\ \hline
+\multicolumn{1}{|c|}{...}          & \multicolumn{1}{c|}{...}          & \multicolumn{1}{c|}{...}                  & \multicolumn{1}{c|}{...}                  & \multicolumn{1}{c|}{...}                  & \multicolumn{1}{c|}{...}                  & ...                 \\ \hline
+\multicolumn{1}{|c|}{N}            & \multicolumn{1}{c|}{3000}         & \multicolumn{1}{c|}{2}                    & \multicolumn{1}{c|}{4}                    & \multicolumn{1}{c|}{6}                    & \multicolumn{1}{c|}{8}                    & S                   \\ \hline
+\end{tabular}
+\end{center}
+%
+\begin{enumerate}
+    \item If P0 wants to write Block 0, what happens to its coherency state?
+    \item If P1 writes to Block 1, is Block 1 on P0 invalidated? Why or why not?
+    \item Which state is set for Block 0 by P1 and P0 after P1's write request for this block?
+\end{enumerate}
